@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: payment-gateway-pro
+  namespace: argocd
+spec:
+  project: shop
+  source:
+    repoURL: https://github.com/Ashish032002/payment-platform
+    targetRevision: main
+    path: frontend/payment-gateway-pro/helm
+    helm:
+      valueFiles: [values.yaml]
+      parameters:
+        - name: image.repository
+          value: docker.io/ashish032002/payment-gateway-pro
+        - name: image.tag
+          value: "0.1.0"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: shop
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
