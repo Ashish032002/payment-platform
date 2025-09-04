@@ -1,0 +1,33 @@
+replicaCount: 2
+
+image:
+  repository: docker.io/ashish030202/payment-gateway-pro
+  tag: "0.1.0"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+env:
+  - name: NEXT_PUBLIC_API_BASE_URL
+    value: "http://api.shop.local"
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: app.shop.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+serviceAccount:
+  create: false
+  name: ""
+  automount: true
+  annotations: {}
+
+# optional (leave off for now)
+autoscaling:
+  enabled: false
