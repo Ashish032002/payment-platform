@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Ashish032002/payment-platform
     targetRevision: main
-    path: <PUT-EXACT-PATH-HERE>
+    path: services/payment-service-backend/payment-service-backend/helm
     helm:
       valueFiles: [values.yaml]
       parameters:
