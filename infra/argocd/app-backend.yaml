@@ -16,6 +16,18 @@ spec:
           value: docker.io/ashish032002/payment-service-backend
         - name: image.tag
           value: "0.1.0"
+        - name: service.port
+          value: "8080"
+        - name: ingress.enabled
+          value: "true"
+        - name: ingress.className
+          value: "nginx"
+        - name: ingress.hosts[0].host
+          value: "api.shop.local"
+        - name: ingress.hosts[0].paths[0].path
+          value: "/"
+        - name: ingress.hosts[0].paths[0].pathType
+          value: "Prefix"
   destination:
     server: https://kubernetes.default.svc
     namespace: shop
@@ -23,5 +35,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
