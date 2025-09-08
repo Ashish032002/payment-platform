@@ -1,0 +1,9 @@
+
+image:
+  repository: your-registry/auth_service
+  tag: latest
+service:
+  port: 8081
+env:
+  JWT_SECRET: "change-me"
+  PORT: "8081"
