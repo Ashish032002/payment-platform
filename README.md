@@ -1,5 +1,5 @@
 
-# Add-ons (No duplicate of your existing folders)
+# Add-ons 
 
 This package only adds missing, *runnable* pieces:
 - `.github/workflows/` (CI that lint + builds auth if present)
